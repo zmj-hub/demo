@@ -4,8 +4,8 @@
 <mapper namespace="com.zmj.demo.dao.UserDao">
     <resultMap id="userMap" type="com.zmj.demo.bean.UserBean">
         <id property="userId" column="user_id"/>
-        <result property="password" column="user_password"/>
-        <result property="userName" column="user_name"/>
+        <result property="password" column="user_name"/>
+        <result property="userName" column="user_password"/>
     </resultMap>
 
 <select id="getUserById"  resultMap="userMap" >
@@ -19,6 +19,9 @@
     where user_name = #{userName}
 </select>
 
-
+<select id="findAllUser" resultMap="userMap">
+    select *
+    from "user"
+</select>
 
 </mapper>
