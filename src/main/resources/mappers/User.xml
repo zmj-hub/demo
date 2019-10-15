@@ -8,18 +8,18 @@
         <result property="userName" column="user_password"/>
     </resultMap>
 
-<select id="getUserById"  resultMap="userMap" >
+    <select id="getUserById" resultMap="userMap">
     select *
     from "user"
     where user_id = #{id}
 </select>
-    <select id="getUserByName"  resultMap="userMap" >
+    <select id="getUserByName" resultMap="userMap">
     select *
     from "user"
     where user_name = #{userName}
 </select>
 
-<select id="findAllUser" resultMap="userMap">
+    <select id="findAllUser" resultMap="userMap">
     select *
     from "user"
 </select>
