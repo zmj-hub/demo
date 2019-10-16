@@ -19,8 +19,14 @@ public class RedisTestService {
 
 //    @Cacheable(value = "user", key = "123")
     public List<UserBean> findAllUser() {
-        List<UserBean> userBeanList = userDao.findAllUser();
-        redisUtils.set("user",userBeanList);
+        List<UserBean> userBeanList;
+        List<UserBean> userBeanList1=(List<UserBean>) redisUtils.get("user");
+        if (userBeanList1!=null){
+            userBeanList=userBeanList1;
+        }else {
+            userBeanList = userDao.findAllUser();
+            redisUtils.set("user", userBeanList);
+        }
         return userBeanList;
     }
 }
