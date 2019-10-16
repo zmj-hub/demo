@@ -29,4 +29,10 @@ public class RedisTestService {
         }
         return userBeanList;
     }
+
+    public UserBean getUserById(Long id){
+        String key="user_"+id;
+
+        return null;
+    }
 }
