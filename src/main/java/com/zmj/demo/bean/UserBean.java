@@ -1,6 +1,8 @@
 package com.zmj.demo.bean;
 
-public class UserBean {
+import java.io.Serializable;
+
+public class UserBean implements Serializable {
     private Long userId;
     private  String userName;
     private String password;
