@@ -11,8 +11,8 @@ public interface UserDao {
     UserBean getUserByName(String userName);
 
     List<UserBean> findAllUser();
-    Long addUser(UserBean userBean);
+    void addUser(UserBean userBean);
     void deleteUser(Long id);
-    UserBean update(UserBean userBean);
+    void updateUser(UserBean userBean);
 
 }
