@@ -1,6 +1,5 @@
 package com.zmj.demo.config;
 
-import com.google.common.base.Predicate;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

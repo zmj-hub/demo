@@ -34,6 +34,7 @@ public class RedisConfigurer extends CachingConfigurerSupport {
     }
 
 
+    @Override
     @Bean
     public KeyGenerator keyGenerator() {
         return (target, method, params) -> {
