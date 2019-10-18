@@ -1,4 +1,6 @@
 package com.zmj.demo.serivce;
+import	java.util.concurrent.ConcurrentHashMap;
+import	java.util.HashMap;
 
 import com.zmj.demo.bean.UserBean;
 import com.zmj.demo.dao.UserDao;
@@ -61,5 +63,7 @@ public class RedisTestService {
         if (redisUtils.exists(key)) {
             redisUtils.remove(key);
         }
+//        HashMap<String, String> hash = new HashMap<> ();
+        ConcurrentHashMap < String, String> concurrent = new ConcurrentHashMap<> ();
     }
 }
