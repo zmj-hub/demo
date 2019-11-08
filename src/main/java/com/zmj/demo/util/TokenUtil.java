@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 public class TokenUtil {
 
-    public static String getTokenUserId(){
+    public static String getTokenUserId() {
         //从http请求头中取出token
-        String token =getRequest().getHeader("token");
+        String token = getRequest().getHeader("token");
         String userId = JWT.decode(token).getAudience().get(0);
         return userId;
     }
@@ -18,6 +18,6 @@ public class TokenUtil {
     private static HttpServletRequest getRequest() {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes();
-        return requestAttributes == null ? null :requestAttributes.getRequest();
+        return requestAttributes == null ? null : requestAttributes.getRequest();
     }
 }

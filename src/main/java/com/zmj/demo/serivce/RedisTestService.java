@@ -1,6 +1,4 @@
 package com.zmj.demo.serivce;
-import	java.util.concurrent.ConcurrentHashMap;
-import	java.util.HashMap;
 
 import com.zmj.demo.bean.UserBean;
 import com.zmj.demo.dao.UserDao;
@@ -11,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -33,7 +32,7 @@ public class RedisTestService {
             return userBean;
         } else {
             UserBean userBean = userDao.getUserById(id);
-            redisUtils.set(key, userBean,5L,TimeUnit.HOURS);
+            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
             return userBean;
         }
     }
@@ -41,7 +40,7 @@ public class RedisTestService {
     public UserBean addUser(UserBean userBean) {
         userDao.addUser(userBean);
         String key = "user_" + userBean.getUserId();
-        redisUtils.set(key, userBean,1L, TimeUnit.MINUTES);
+        redisUtils.set(key, userBean, 1L, TimeUnit.MINUTES);
         return userBean;
     }
 
@@ -50,9 +49,9 @@ public class RedisTestService {
         String key = "user_" + userBean.getUserId();
         if (redisUtils.exists(key)) {
             redisUtils.remove(key);
-            redisUtils.set(key, userBean,5L,TimeUnit.HOURS);
+            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
         } else {
-            redisUtils.set(key, userBean,5L,TimeUnit.HOURS);
+            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
         }
         return userBean;
     }
@@ -64,6 +63,6 @@ public class RedisTestService {
             redisUtils.remove(key);
         }
 //        HashMap<String, String> hash = new HashMap<> ();
-        ConcurrentHashMap < String, String> concurrent = new ConcurrentHashMap<> ();
+        ConcurrentHashMap<String, String> concurrent = new ConcurrentHashMap<>();
     }
 }

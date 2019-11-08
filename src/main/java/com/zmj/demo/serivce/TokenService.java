@@ -12,13 +12,13 @@ import java.util.Date;
 @Transactional
 public class TokenService {
 
-    public String getToken(UserBean user){
-        Date start =new Date();
-        long currentTime =System.currentTimeMillis()+60*60*1000;//一小时有效
-        Date end =new Date(currentTime);
-        String token ="";
+    public String getToken(UserBean user) {
+        Date start = new Date();
+        long currentTime = System.currentTimeMillis() + 60 * 60 * 1000;//一小时有效
+        Date end = new Date(currentTime);
+        String token = "";
         token = JWT.create().withAudience(user.getUserId().toString()).withIssuedAt(start).withIssuedAt(end)
                 .sign(Algorithm.HMAC256(user.getPassword()));
-        return  token;
+        return token;
     }
 }

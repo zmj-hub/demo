@@ -35,13 +35,13 @@ public class RedisTestController {
 
     @ApiOperation(value = "更新用户信息", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public Object updateUser(HttpServletRequest request,@RequestBody UserBean userBean) {
+    public Object updateUser(HttpServletRequest request, @RequestBody UserBean userBean) {
         return redisTestService.updateUser(userBean);
     }
 
     @ApiOperation(value = "删除用户", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-    public Object deleteUser(HttpServletRequest request,@RequestBody Long id) {
+    public Object deleteUser(HttpServletRequest request, @RequestBody Long id) {
         redisTestService.deleteUser(id);
         return id;
     }

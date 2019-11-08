@@ -7,6 +7,7 @@ import com.zmj.demo.dao.UserDao;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Random;
@@ -14,20 +15,21 @@ import java.util.Random;
 @Service
 @Transactional
 public class UserService {
-    Random random =new Random();
+    Random random = new Random();
     @Resource
     UserDao userDao;
     @Resource
     LogTokenDao logTokenDao;
 
-public UserBean getUserById(Long id){
-    return userDao.getUserById(id);
-}
-public  UserBean getUserByName(String userName){
-    return userDao.getUserByName(userName);
-}
+    public UserBean getUserById(Long id) {
+        return userDao.getUserById(id);
+    }
 
-//public Map<String,String> register(String userName,String userPassword){
+    public UserBean getUserByName(String userName) {
+        return userDao.getUserByName(userName);
+    }
+
+    //public Map<String,String> register(String userName,String userPassword){
 //
 //    Map<String,String> map = new HashMap<String, String>();
 //    if (StringUtils.isEmpty(userName)){
@@ -52,12 +54,11 @@ public  UserBean getUserByName(String userName){
 //
 //    return null;
 //}
-@Cacheable(value = "user", key = "123")
+    @Cacheable(value = "user", key = "123")
 //@Cacheable(cacheNames = {"hello"})
-public List<UserBean> findAllUser(){
-   return userDao.findAllUser();
-}
-
+    public List<UserBean> findAllUser() {
+        return userDao.findAllUser();
+    }
 
 
 }
