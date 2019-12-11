@@ -1,6 +1,6 @@
 package com.zmj.demo.controller;
 
-import com.zmj.demo.bean.UserBean;
+import com.zmj.demo.bean.User;
 import com.zmj.demo.serivce.TokenService;
 import com.zmj.demo.serivce.UserService;
 import com.zmj.demo.util.TokenUtil;
@@ -36,9 +36,9 @@ public class LoginController {
 
     @ApiOperation(value = "登陆", notes = "登陆")
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public Object login(UserBean user, HttpServletResponse response) throws JSONException {
+    public Object login(User user, HttpServletResponse response) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        UserBean userForBase = new UserBean();
+        User userForBase = new User();
         userForBase.setUserId(userService.getUserByName(user.getUserName()).getUserId());
         userForBase.setUserName(userService.getUserByName(user.getUserName()).getUserName());
         userForBase.setPassword(userService.getUserByName(user.getUserName()).getPassword());

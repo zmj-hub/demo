@@ -2,7 +2,7 @@ package com.zmj.demo.bean;
 
 import java.io.Serializable;
 
-public class UserBean implements Serializable {
+public class User implements Serializable {
     private Long userId;
     private  String userName;
     private String password;
@@ -35,7 +35,7 @@ public class UserBean implements Serializable {
 
     @Override
     public String toString() {
-        return "UserBean{" +
+        return "User{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +

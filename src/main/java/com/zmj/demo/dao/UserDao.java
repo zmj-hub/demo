@@ -1,21 +1,21 @@
 package com.zmj.demo.dao;
 
-import com.zmj.demo.bean.UserBean;
+import com.zmj.demo.bean.User;
 
 import java.util.List;
 
 public interface UserDao {
 
-    UserBean getUserById(Long id);
+    User getUserById(Long id);
 
-    UserBean getUserByName(String userName);
+    User getUserByName(String userName);
 
-    List<UserBean> findAllUser();
+    List<User> findAllUser();
 
-    void addUser(UserBean userBean);
+    void addUser(User user);
 
     void deleteUser(Long id);
 
-    void updateUser(UserBean userBean);
+    void updateUser(User user);
 
 }

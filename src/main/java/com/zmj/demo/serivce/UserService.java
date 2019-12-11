@@ -1,7 +1,7 @@
 package com.zmj.demo.serivce;
 
 
-import com.zmj.demo.bean.UserBean;
+import com.zmj.demo.bean.User;
 import com.zmj.demo.dao.LogTokenDao;
 import com.zmj.demo.dao.UserDao;
 import org.springframework.cache.annotation.Cacheable;
@@ -21,11 +21,14 @@ public class UserService {
     @Resource
     LogTokenDao logTokenDao;
 
-    public UserBean getUserById(Long id) {
-        return userDao.getUserById(id);
+
+    @Cacheable(value = "user",key = "#id")
+    public User getUserById(Long id) {
+        User user= userDao.getUserById(id);
+        return user;
     }
 
-    public UserBean getUserByName(String userName) {
+    public User getUserByName(String userName) {
         return userDao.getUserByName(userName);
     }
 
@@ -40,12 +43,12 @@ public class UserService {
 //        map.put("msg","密码不能为空");
 //        return map;
 //    }
-//    UserBean user = userDao.getUserByName(userName);
+//    User user = userDao.getUserByName(userName);
 //    if(user != null){
 //        map.put("msg","用户名已存在");
 //        return map;
 //    }
-//    user =new UserBean();
+//    user =new User();
 //    user.setUserName(userName);
 //    user.setSalt(UUID.randomUUID().toString().substring(0,5));
 //    user.setHeadUrl(String.format("http://images.nowcoder.com/head/%dt.png", random.nextInt(1000)));
@@ -56,7 +59,7 @@ public class UserService {
 //}
     @Cacheable(value = "user", key = "123")
 //@Cacheable(cacheNames = {"hello"})
-    public List<UserBean> findAllUser() {
+    public List<User> findAllUser() {
         return userDao.findAllUser();
     }
 

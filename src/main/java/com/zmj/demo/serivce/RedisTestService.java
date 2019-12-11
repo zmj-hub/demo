@@ -1,6 +1,6 @@
 package com.zmj.demo.serivce;
 
-import com.zmj.demo.bean.UserBean;
+import com.zmj.demo.bean.User;
 import com.zmj.demo.dao.UserDao;
 import com.zmj.demo.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,39 +21,39 @@ public class RedisTestService {
     @Autowired
     RedisUtils redisUtils;
 
-    public List<UserBean> findAllUser() {
+    public List<User> findAllUser() {
         return userDao.findAllUser();
     }
 
-    public UserBean getUserById(Long id) {
+    public User getUserById(Long id) {
         String key = "user_" + id;
         if (redisUtils.exists(key)) {
-            UserBean userBean = (UserBean) redisUtils.get(key);
-            return userBean;
+            User user = (User) redisUtils.get(key);
+            return user;
         } else {
-            UserBean userBean = userDao.getUserById(id);
-            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
-            return userBean;
+            User user = userDao.getUserById(id);
+            redisUtils.set(key, user, 5L, TimeUnit.HOURS);
+            return user;
         }
     }
 
-    public UserBean addUser(UserBean userBean) {
-        userDao.addUser(userBean);
-        String key = "user_" + userBean.getUserId();
-        redisUtils.set(key, userBean, 1L, TimeUnit.MINUTES);
-        return userBean;
+    public User addUser(User user) {
+        userDao.addUser(user);
+        String key = "user_" + user.getUserId();
+        redisUtils.set(key, user, 1L, TimeUnit.MINUTES);
+        return user;
     }
 
-    public UserBean updateUser(UserBean userBean) {
-        userDao.updateUser(userBean);
-        String key = "user_" + userBean.getUserId();
+    public User updateUser(User user) {
+        userDao.updateUser(user);
+        String key = "user_" + user.getUserId();
         if (redisUtils.exists(key)) {
             redisUtils.remove(key);
-            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
+            redisUtils.set(key, user, 5L, TimeUnit.HOURS);
         } else {
-            redisUtils.set(key, userBean, 5L, TimeUnit.HOURS);
+            redisUtils.set(key, user, 5L, TimeUnit.HOURS);
         }
-        return userBean;
+        return user;
     }
 
     public void deleteUser(Long id) {

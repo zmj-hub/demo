@@ -1,6 +1,6 @@
 package com.zmj.demo.controller;
 
-import com.zmj.demo.bean.UserBean;
+import com.zmj.demo.bean.User;
 import com.zmj.demo.serivce.RedisTestService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +29,14 @@ public class RedisTestController {
 
     @ApiOperation(value = "新增用户", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public Object addUser(HttpServletRequest request, @RequestBody UserBean userBean) {
-        return redisTestService.addUser(userBean);
+    public Object addUser(HttpServletRequest request, @RequestBody User user) {
+        return redisTestService.addUser(user);
     }
 
     @ApiOperation(value = "更新用户信息", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public Object updateUser(HttpServletRequest request, @RequestBody UserBean userBean) {
-        return redisTestService.updateUser(userBean);
+    public Object updateUser(HttpServletRequest request, @RequestBody User user) {
+        return redisTestService.updateUser(user);
     }
 
     @ApiOperation(value = "删除用户", produces = MediaType.APPLICATION_JSON_VALUE)
