@@ -4,6 +4,7 @@ package com.zmj.demo.serivce;
 import com.zmj.demo.bean.User;
 import com.zmj.demo.dao.LogTokenDao;
 import com.zmj.demo.dao.UserDao;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

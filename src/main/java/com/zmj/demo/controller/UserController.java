@@ -1,5 +1,6 @@
 package com.zmj.demo.controller;
 
+import com.zmj.demo.bean.User;
 import com.zmj.demo.serivce.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
